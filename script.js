@@ -24,7 +24,7 @@ function registerUser() {
         data_nascimento: $('#birthDate').val()
     };
     $.ajax({
-        url: 'http://localhost:3000/usuario', 
+        url: 'https://desafio-de-desenvolvimento.onrender.com/usuario', 
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(user),
@@ -50,7 +50,7 @@ function updateUser() {
     };
     const userId = prompt('Digite o ID do usuário para atualizar:');
     $.ajax({
-        url: `http://localhost:3000/usuario/${userId}`, 
+        url: `https://desafio-de-desenvolvimento.onrender.com/usuario/${userId}`, 
         type: 'PUT',
         contentType: 'application/json',
         data: JSON.stringify(user),
@@ -68,7 +68,7 @@ function updateUser() {
 function deleteUser() {
     const userId = prompt('Digite o ID do usuário para deletar:');
     $.ajax({
-        url: `http://localhost:3000/usuario/${userId}`, 
+        url: `https://desafio-de-desenvolvimento.onrender.com/usuario/${userId}`, 
         type: 'DELETE',
         success: function(response) {
             console.log('Success:', response);
@@ -85,7 +85,7 @@ function deleteUser() {
 
 function listUsers() {
     $.ajax({
-        url: 'http://localhost:3000/usuario', 
+        url: 'https://desafio-de-desenvolvimento.onrender.com/usuario', 
         type: 'GET',
         success: function(users) {                    
             const userTableBody = $('#userTableBody');
@@ -115,7 +115,7 @@ function detailUser() {
     const userId = prompt('Digite o ID do usuário para detalhar:');
     
     $.ajax({
-        url: `http://localhost:3000/usuario/${userId}`, 
+        url: `https://desafio-de-desenvolvimento.onrender.com/usuario/${userId}`, 
         type: 'GET',
         success: function(user) {                    
             console.log(user.nome);
