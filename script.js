@@ -3,6 +3,10 @@ function showMessage(message, type) {
     messageDiv.removeClass().addClass(`alert alert-${type}`).text(message).show();
 }
 
+function coutingLines(count) {
+    document.getElementById("counting").textContent = count;
+}
+
 function handleXhrResponse(xhr) {          
     if (xhr.responseJSON) {
         if (typeof xhr.responseJSON === 'object' && xhr.responseJSON.mensagem) {                    
@@ -84,6 +88,7 @@ function deleteUser() {
 }
 
 function listUsers() {
+    let count = 0;
     $.ajax({
         url: 'https://desafio-de-desenvolvimento.onrender.com/usuario', 
         type: 'GET',
@@ -91,6 +96,7 @@ function listUsers() {
             const userTableBody = $('#userTableBody');
             userTableBody.empty();
             users.forEach(user => {
+                count++;
                 userTableBody.append(`
                     <tr>
                         <td>${user.id}</td>
@@ -102,6 +108,7 @@ function listUsers() {
                     </tr>
                 `);
             });
+            coutingLines(count);
             showMessage('Lista de usuários carregada com sucesso!', 'success');
         },
         error: function(xhr) {
